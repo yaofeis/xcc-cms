@@ -58,9 +58,9 @@
       }
     },
     created(){
-      this.$axios.post(this.http.getCouponList).then((res)=>{
-        console.log(res);
-      });
+      // this.$axios.post(this.http.getCouponList).then((res)=>{
+      //   console.log(res);
+      // });
     }
   }
 </script>

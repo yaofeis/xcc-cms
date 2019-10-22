@@ -155,7 +155,7 @@
         name: 'pageNum',
         value: 1,
       }];
-      this.init(obj);
+      // this.init(obj);
     }
   }
 </script>

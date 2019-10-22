@@ -21,8 +21,8 @@
       <el-table-column prop="address" label="地址" width="180"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-          <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          <el-button size="mini" type="text" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+          <el-button size="mini" type="text" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -59,12 +59,12 @@
         let params = new FormData();
         params.append("pageSize", _this.pageSize);
         params.append("pageNum", num);
-        _this.$axios.post('/api/schoolhome-server/school/getSchoolList.do?', params).then((res)=>{
+        _this.$axios.post(_this.http.getSchoolList, params).then((res)=>{
           if(res.data.code === "0"){
             _this.list = res.data.result;
             _this.total = res.data.total;
           }else{
-            _this.$message.error('服务器出错!');
+            _this.$message.error(res.data.message);
           }
         });
       }

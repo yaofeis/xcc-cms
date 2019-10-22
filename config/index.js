@@ -11,17 +11,17 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
-        target: 'https://www.sqyj.tech',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': 'https://www.sqyj.tech' //例如 /api/getuser或被重写为 /ywapi/getuser
-        },
-        onProxyReq: function (proxyReq, req, res) {
-          //实在不知道代理后的路径，可以在这里打印出出来看看
-          console.log("原路径：" + req.originalUrl, "代理路径：" + req.path)
-        }
-      }
+      // '/api': {
+      //   target: 'https://www.sqyj.tech',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/api': 'https://www.sqyj.tech' //例如 /api/getuser或被重写为 /ywapi/getuser
+      //   },
+      //   onProxyReq: function (proxyReq, req, res) {
+      //     //实在不知道代理后的路径，可以在这里打印出出来看看
+      //     console.log("原路径：" + req.originalUrl, "代理路径：" + req.path)
+      //   }
+      // }
     },
 
     // Various Dev Server settings
