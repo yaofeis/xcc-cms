@@ -18,7 +18,6 @@ const http = {
   deletedNewsById: url + "news/deleteNews.do?",
   getSettingById: url + "setting/getSettingById.do?",
   modifySetting : url + "setting/modifySetting.do?",
-  getBannerList : url + "banner/getBannerList.do?",
   moreFileUpload: url + "fileUpload/moreFileUpload.do?",
   // 校查查
   getSchoolList: url + "school/getSchoolList.do?",// 获取学校列表
@@ -27,6 +26,9 @@ const http = {
   modifyQuestion: url + "question/modifyQuestion.do?",// 修改问题
   getAnswerList: url + "answer/getAnswerList.do?",// 获取问题的回答列表
   deleteAnswer: url + "answer/deleteAnswer.do?",// 删除答案
+  getBannerList : url + "banner/getBannerList.do?",// 获取轮播图列表
+  oneFileUpload : url + "fileUpload/oneFileUpload.do?",// 单文件上传
+  modifyBanner : url + "banner/modifyBanner.do?",// 修改轮播图
 };
 
 export default http;

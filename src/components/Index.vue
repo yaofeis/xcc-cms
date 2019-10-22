@@ -20,6 +20,7 @@
             <el-menu-item-group>
               <el-menu-item index="SchoolList">学校列表</el-menu-item>
               <el-menu-item index="QuestionList">问题列表</el-menu-item>
+              <el-menu-item index="Banner">轮播图</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">
@@ -29,7 +30,6 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="PlatformInformation">平台信息</el-menu-item>
-              <el-menu-item index="Banner">轮播图</el-menu-item>
               <el-menu-item index="PriceStandard">定价标准</el-menu-item>
             </el-menu-item-group>
           </el-submenu>

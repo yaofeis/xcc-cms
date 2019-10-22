@@ -13,12 +13,12 @@
     <el-table :data="list" border style="width: 99%" :height="tableHeight" :fit="true">
       <el-table-column type="index" width="50"></el-table-column>
       <el-table-column prop="questionTitle" label="标题" width="150"></el-table-column>
-      <el-table-column prop="questionDescrib" label="描述" width="280"></el-table-column>
+      <el-table-column prop="questionDescrib" label="描述"></el-table-column>
       <el-table-column prop="address" label="发布人" width="100"></el-table-column>
       <el-table-column prop="address" label="发布时间" width="100"></el-table-column>
       <el-table-column prop="address" label="回答数" width="100"></el-table-column>
       <el-table-column prop="address" label="浏览数" width="100"></el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="操作" width="170">
         <template slot-scope="scope">
           <el-button size="mini" type="text" @click="edit(scope.row)">编辑</el-button>
           <el-button size="mini" type="text" @click="_delete(scope.row)">删除</el-button>
