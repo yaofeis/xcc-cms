@@ -50,14 +50,25 @@
     },
     methods: {
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+        let _this = this;
+        _this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$router.push('Index');
+            let params = new FormData();
+            params.append("username", _this.loginForm.account);
+            params.append("password", _this.loginForm.pass);
+            _this.$axios.post(_this.http.login, params).then((res) => {
+              if (res.data.code === "0") {
+                _this.$store.dispatch("login", res.data.result);
+                _this.$router.push('Index');
+              } else {
+                _this.$message.error(res.data.message);
+              }
+            });
           }
         });
       }
     },
-    created(){
+    created() {
       // this.$axios.post(this.http.getCouponList).then((res)=>{
       //   console.log(res);
       // });

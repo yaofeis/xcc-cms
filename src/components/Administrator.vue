@@ -137,7 +137,7 @@
         params.append("password", _this.dialogForm.password);
         params.append("nickName", _this.dialogForm.nickname);
         params.append("roleId", "1");
-        params.append("operatorId", "1");
+        params.append("operatorId", _this.$store.state.admin.adminId);
         params.append("activated", _this.dialogForm.status);
         if (_this.dialogForm.id === "") {
           // 新增

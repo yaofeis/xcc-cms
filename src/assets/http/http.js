@@ -32,6 +32,7 @@ const http = {
   getAdminList : url + "admin/getAdminList.do?",// 获取管理员列表
   addAdmin : url + "admin/addAdmin.do?",// 新增管理员
   modifyAdmin : url + "admin/modifyAdmin.do?",// 修改管理员
+  login : url + "admin/login.do?",// 管理员登录
 };
 
 export default http;

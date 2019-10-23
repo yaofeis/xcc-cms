@@ -6,7 +6,10 @@
           <img src="../assets/logo.png" alt="">
           <span>公司名称</span>
         </div>
-        <div @click="exit"><i class="el-icon-share"></i>退出</div>
+        <div>
+          <span>当前登录：{{nickname}}</span>
+          <span @click="exit">退出</span>
+        </div>
       </div>
     </el-header>
     <el-container>
@@ -53,7 +56,9 @@
   export default {
     name: "Index",
     data() {
-      return {};
+      return {
+        nickname: this.$store.state.admin.nickName
+      };
     },
     methods: {
       exit() {
@@ -62,8 +67,10 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
+          this.$store.dispatch("outLogin");
           this.$router.push('/');
-        })
+        }).catch(() => {
+        });
       }
     }
   }
@@ -95,10 +102,13 @@
 
       > div:nth-of-type(2) {
         color: white;
-        cursor: pointer;
 
-        > i {
-          margin-right: 5px;
+        > span:nth-of-type(1) {
+          padding-right: 10px;
+        }
+
+        > span:nth-of-type(2) {
+          cursor: pointer;
         }
       }
     }

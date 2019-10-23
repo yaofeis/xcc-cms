@@ -13,7 +13,7 @@ import moment from 'moment'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
-import { Loading } from 'element-ui';
+import {Loading, Message} from 'element-ui';
 
 Vue.prototype.$axios = axios;
 Vue.prototype.http = http;
@@ -22,11 +22,17 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(VueQuillEditor);
 
+// 判断用户是否登录，没有则跳转到登录界面
 router.beforeEach((to, from, next) => {
-  // console.log(router);
-  next();
+  if (store.state.admin === "" && to.path !== '/Login' && to.path !== '/') {
+    Message.info("请登录!");
+    next('/');
+  } else {
+    next();
+  }
 });
 
+// 接口请求拦截添加loading
 let loadingInstance;
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
@@ -53,6 +59,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: {App},
   template: '<App/>'
 });
