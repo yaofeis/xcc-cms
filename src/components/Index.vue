@@ -21,6 +21,7 @@
               <el-menu-item index="SchoolList">学校列表</el-menu-item>
               <el-menu-item index="QuestionList">问题列表</el-menu-item>
               <el-menu-item index="Banner">轮播图</el-menu-item>
+              <el-menu-item index="Administrator">管理员</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">

@@ -51,25 +51,25 @@
       }
     },
     methods: {
-      search(){
+      search() {
 
       },
-      init(num){
+      init(num) {
         let _this = this;
         let params = new FormData();
         params.append("pageSize", _this.pageSize);
         params.append("pageNum", num);
-        _this.$axios.post(_this.http.getSchoolList, params).then((res)=>{
-          if(res.data.code === "0"){
+        _this.$axios.post(_this.http.getSchoolList, params).then((res) => {
+          if (res.data.code === "0") {
             _this.list = res.data.result;
             _this.total = res.data.total;
-          }else{
+          } else {
             _this.$message.error(res.data.message);
           }
         });
       }
     },
-    created(){
+    created() {
       let _this = this;
       _this.tableHeight = document.body.clientHeight - 200;
       _this.init(1);
@@ -78,7 +78,13 @@
 </script>
 
 <style lang="scss">
-  .el-pagination {
-    padding-top: 15px;
+  #schoolList {
+    .el-table__body-wrapper {
+      overflow-y: auto;
+    }
+
+    .el-pagination {
+      padding-top: 15px;
+    }
   }
 </style>

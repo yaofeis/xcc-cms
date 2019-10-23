@@ -1,5 +1,5 @@
 <template>
-  <div id="schoolList">
+  <div id="questionList">
     <div>
       <el-form :inline="true" :model="form" class="demo-form-inline">
         <el-form-item label="标题:">
@@ -267,7 +267,13 @@
 </script>
 
 <style lang="scss">
-  .el-pagination {
-    padding-top: 15px;
+  #questionList {
+    .el-table__body-wrapper {
+      overflow-y: auto;
+    }
+
+    .el-pagination {
+      padding-top: 15px;
+    }
   }
 </style>

@@ -29,6 +29,9 @@ const http = {
   getBannerList : url + "banner/getBannerList.do?",// 获取轮播图列表
   oneFileUpload : url + "fileUpload/oneFileUpload.do?",// 单文件上传
   modifyBanner : url + "banner/modifyBanner.do?",// 修改轮播图
+  getAdminList : url + "admin/getAdminList.do?",// 获取管理员列表
+  addAdmin : url + "admin/addAdmin.do?",// 新增管理员
+  modifyAdmin : url + "admin/modifyAdmin.do?",// 修改管理员
 };
 
 export default http;

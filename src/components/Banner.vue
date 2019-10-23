@@ -39,7 +39,7 @@
       </el-table-column>
     </el-table>
 
-    <!--编辑评论模态框-->
+    <!--编辑模态框-->
     <el-dialog title="编辑" :visible.sync="editDialog" width="400px">
       <el-form :model="editForm" label-width="80px">
         <el-form-item label="标题:">
@@ -107,7 +107,7 @@
     },
     created() {
       let _this = this;
-      _this.tableHeight = document.body.clientHeight - 200;
+      _this.tableHeight = document.body.clientHeight - 155;
       _this.init();
     },
     methods: {
@@ -198,6 +198,10 @@
   #banner {
     font-size: 14px;
     color: #333;
+
+    .el-table__body-wrapper {
+      overflow-y: auto;
+    }
 
     .avatar-uploader .el-upload {
       border: 1px dashed #d9d9d9;
