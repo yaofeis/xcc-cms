@@ -137,6 +137,8 @@
       save() {
         let _this = this;
         let params = new FormData();
+        if (_this.editForm.title === "") return _this.$message('标题不能为空!');
+        if (_this.editForm.desc === "") return _this.$message('描述不能为空!');
         params.append("questionId", _this.editForm.id);
         params.append("questionTitle", _this.editForm.title);
         params.append("questionDescrib", _this.editForm.desc);
@@ -174,7 +176,8 @@
               _this.$message.error(res.data.message);
             }
           });
-        }).catch(() => {});
+        }).catch(() => {
+        });
       },
       // 换页
       pageChange(val) {
@@ -232,7 +235,8 @@
               _this.$message.error(res.data.message);
             }
           });
-        }).catch(() => {});
+        }).catch(() => {
+        });
       },
       // 初始化
       init(num) {
