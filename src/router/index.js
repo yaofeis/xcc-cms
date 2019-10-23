@@ -16,6 +16,7 @@ import SchoolList from '@/components/SchoolList'
 import QuestionList from '@/components/QuestionList'
 import Banner from '@/components/Banner'
 import Administrator from '@/components/Administrator'
+import News from '@/components/News'
 
 Vue.use(Router);
 
@@ -86,6 +87,10 @@ const routes = [
         path: '/Administrator',
         name: 'Administrator',
         component: Administrator
+      }, {
+        path: '/News',
+        name: 'News',
+        component: News
       }
     ]
   }
