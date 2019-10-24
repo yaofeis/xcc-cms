@@ -203,7 +203,7 @@
         params.append("newsTitle", _this.editForm.title);
         params.append("newsContent", _this.editForm.content);
         params.append("showImage", _this.editForm.img);
-        params.append("showContent", showContent.substring(0, 100));
+        params.append("showContent", showContent.substring(0, 50));
         let url = "";
         if (_this.editForm.id === "") {
           // 新增
