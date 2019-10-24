@@ -56,10 +56,6 @@ const routes = [
         name: 'Order',
         component: Order
       }, {
-        path: '/Banner',
-        name: 'Banner',
-        component: Banner
-      }, {
         path: '/Payapplication',
         name: 'Payapplication',
         component: Payapplication

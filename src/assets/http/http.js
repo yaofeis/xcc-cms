@@ -11,10 +11,8 @@ const http = {
   getOrderById: url + 'order/getOrderById.do?',
   getWithdrawalList: url + 'withdrawal/getWithdrawalList.do?',
   reviewWithdrawal: url + 'withdrawal/reviewWithdrawal.do?',
-  getNewsList: url + "news/getNewsList.do?",
   getNewsById: url + "news/getNewsById.do?",
   modifyNewsById: url + "news/modifyNews.do?",
-  addNews: url + "news/addNews.do?",
   deletedNewsById: url + "news/deleteNews.do?",
   getSettingById: url + "setting/getSettingById.do?",
   modifySetting : url + "setting/modifySetting.do?",
@@ -33,6 +31,10 @@ const http = {
   addAdmin : url + "admin/addAdmin.do?",// 新增管理员
   modifyAdmin : url + "admin/modifyAdmin.do?",// 修改管理员
   login : url + "admin/login.do?",// 管理员登录
+  getNewsList : url + "news/getNewsList.do?",// 获取新闻列表
+  modifyNews : url + "news/modifyNews.do?",// 修改新闻
+  addNews : url + "news/addNews.do?",// 新增新闻
+  deleteNews : url + "news/deleteNews.do?",// 删除新闻
 };
 
 export default http;
