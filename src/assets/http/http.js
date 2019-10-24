@@ -35,6 +35,7 @@ const http = {
   modifyNews : url + "news/modifyNews.do?",// 修改新闻
   addNews : url + "news/addNews.do?",// 新增新闻
   deleteNews : url + "news/deleteNews.do?",// 删除新闻
+  addBanner : url + "banner/addBanner.do?",// 新增轮播图
 };
 
 export default http;

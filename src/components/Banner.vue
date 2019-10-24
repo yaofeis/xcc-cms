@@ -14,6 +14,9 @@
       <el-form-item>
         <el-button @click="search" size="small" icon="el-icon-search">搜索</el-button>
       </el-form-item>
+      <el-form-item>
+        <el-button @click="newAdd" size="small" icon="el-icon-plus">新增</el-button>
+      </el-form-item>
     </el-form>
     <el-table :data="list" border style="width: 99%" :height="tableHeight" :fit="true">
       <el-table-column type="index" width="50"></el-table-column>
@@ -55,10 +58,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="跳转链接:">
-          <el-select v-model="editForm.jumpUrl" size="small" style="width: 200px">
-            <el-option label="激活" value="1"></el-option>
-            <el-option label="未激活" value="2"></el-option>
-          </el-select>
+          <el-input v-model="editForm.jumpUrl" size="small" style="width: 200px"></el-input>
         </el-form-item>
         <el-form-item label="图片:">
           <el-upload
@@ -139,9 +139,39 @@
         this.editForm.img = row.bannerImage;
         this.editForm.id = row.bannerId;
       },
+      // 打开新增模态框
+      newAdd() {
+        this.editDialog = true;
+        this.editForm.title = "";
+        this.editForm.sort = "";
+        this.editForm.status = "";
+        this.editForm.jumpUrl = "";
+        this.editForm.img = "";
+        this.editForm.id = "";
+      },
       // 删除
       _delete(row) {
-
+        let _this = this;
+        _this.$confirm('是否删除该轮播图?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          // let params = new FormData();
+          // params.append("newsId", row.newsId);
+          // _this.$axios.post(_this.http.deleteNews, params).then((res) => {
+          //   if (res.data.code === "0") {
+          //     _this.$message({
+          //       message: res.data.message,
+          //       type: 'success'
+          //     });
+          //     _this.init(1);
+          //   } else {
+          //     _this.$message.error(res.data.message);
+          //   }
+          // });
+        }).catch(() => {
+        });
       },
       // 搜索
       search() {
@@ -149,18 +179,19 @@
         _this.init(_this.form);
       },
       // 文件改变时
-      fileChange(file){
+      fileChange(file) {
         let _this = this;
-        if(file && file.raw){
+        if (file && file.raw) {
           let params = new FormData;
           params.append("file", file.raw);
           params.append("fileType", "3");
-          _this.$axios.post(_this.http.moreFileUpload, params).then((res)=>{
+          _this.$axios.post(_this.http.oneFileUpload, params).then((res) => {
             if (res.data.code === "0") {
               _this.$message({
                 message: '上传成功',
                 type: 'success'
               });
+              _this.editForm.img = res.data.result;
             } else {
               _this.$message.error(res.data.message);
             }
@@ -171,13 +202,25 @@
       save() {
         let _this = this;
         let params = new FormData;
-        params.append("bannerId", _this.editForm.id);
+        let url = "";
+        if (_this.editForm.title === "") return _this.$message('标题不能为空!');
+        if (_this.editForm.sort === "") return _this.$message('排序不能为空!');
+        if (_this.editForm.status === "") return _this.$message('请选择状态!');
+        if (_this.editForm.img === "") return _this.$message('请上传图片!');
+        if (_this.editForm.id === "") {
+          // 新增
+          url = _this.http.addBanner;
+        } else {
+          // 编辑
+          url = _this.http.modifyBanner;
+          params.append("bannerId", _this.editForm.id);
+        }
         params.append("bannerTitle", _this.editForm.title);
         params.append("sortIndex", _this.editForm.sort);
         params.append("status", _this.editForm.status);
         params.append("jumpUrl", _this.editForm.jumpUrl);
         params.append("bannerImage", _this.editForm.img);
-        _this.$axios.post(_this.http.modifyBanner, params).then((res)=>{
+        _this.$axios.post(url, params).then((res) => {
           if (res.data.code === "0") {
             _this.$message({
               message: '操作成功!',
