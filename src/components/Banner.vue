@@ -157,19 +157,19 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          // let params = new FormData();
-          // params.append("newsId", row.newsId);
-          // _this.$axios.post(_this.http.deleteNews, params).then((res) => {
-          //   if (res.data.code === "0") {
-          //     _this.$message({
-          //       message: res.data.message,
-          //       type: 'success'
-          //     });
-          //     _this.init(1);
-          //   } else {
-          //     _this.$message.error(res.data.message);
-          //   }
-          // });
+          let params = new FormData();
+          params.append("bannerId", row.bannerId);
+          _this.$axios.post(_this.http.deleteBanner, params).then((res) => {
+            if (res.data.code === "0") {
+              _this.$message({
+                message: res.data.message,
+                type: 'success'
+              });
+              _this.init();
+            } else {
+              _this.$message.error(res.data.message);
+            }
+          });
         }).catch(() => {
         });
       },

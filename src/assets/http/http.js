@@ -26,6 +26,7 @@ const http = {
   addBanner : url + "banner/addBanner.do?",// 新增轮播图
   modifyBanner : url + "banner/modifyBanner.do?",// 修改轮播图
   getBannerList : url + "banner/getBannerList.do?",// 获取轮播图列表
+  deleteBanner : url + "banner/deleteBanner.do",// 删除轮播图
   /*
    * 新闻
    */
