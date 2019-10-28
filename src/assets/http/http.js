@@ -16,10 +16,11 @@ const http = {
   deletedNewsById: url + "news/deleteNews.do?",
   getSettingById: url + "setting/getSettingById.do?",
   modifySetting : url + "setting/modifySetting.do?",
-  moreFileUpload: url + "fileUpload/moreFileUpload.do?",
   // 校查查
   getSchoolList: url + "school/getSchoolList.do?",// 获取学校列表
+  addSchool: url + "school/addSchool.do?",// 添加学校
   oneFileUpload : url + "fileUpload/oneFileUpload.do?",// 单文件上传
+  moreFileUpload: url + "fileUpload/moreFileUpload.do?",// 多文件上传
   /*
    * 轮播图
    */
