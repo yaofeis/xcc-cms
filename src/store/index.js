@@ -3,7 +3,8 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 const state = {
-  admin: JSON.parse(sessionStorage.getItem("admin")) || ""
+  admin: JSON.parse(sessionStorage.getItem("admin")) || "",
+  schoolId: JSON.parse(sessionStorage.getItem("schoolId")) || "",
 };
 // const getters = {
 //   login(state) {
@@ -18,6 +19,10 @@ const mutations = {
   outLogin(state) {
     sessionStorage.removeItem("admin");
     state.admin = "";
+  },
+  school(state, obj){
+    sessionStorage.setItem("admin", JSON.stringify(obj));
+    state.schoolId = obj;
   }
 };
 const actions = {
@@ -26,6 +31,9 @@ const actions = {
   },
   outLogin(context) {
     context.commit('outLogin');
+  },
+  school(context, obj){
+    context.commit('school', obj);
   }
 };
 const store = new Vuex.Store({

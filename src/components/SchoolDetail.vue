@@ -534,6 +534,28 @@
           children: children
         });
       });
+
+      // 获取学校信息(编辑时回显)
+      let params = new FormData();
+      params.append("schoolId", _this.$route.query.id);
+      _this.$axios.post(_this.http.getSchoolById, params).then((res) => {
+        if (res.data.code === "0") {
+          console.log(res.data.result);
+          _this.dialogForm.name = res.data.result.schoolName;
+          _this.dialogForm.address = res.data.result.address;
+          _this.dialogForm.tel = res.data.result.described;
+          _this.dialogForm.tuition = res.data.result.tuition;
+          _this.dialogForm.ratio = res.data.result.studentRatio;
+          _this.dialogForm.creatTime = res.data.result.buildYear;
+          _this.dialogForm.headImg = res.data.result.icon;
+          _this.dialogForm.admissionRequirements = res.data.result.entryRequirements;
+          _this.dialogForm.areaCovered = res.data.result.area;
+          _this.dialogForm.facilities = res.data.result.campusFacilities;
+          // TODO 先把多图片弄了
+        } else {
+          _this.$message.error(res.data.message);
+        }
+      });
     },
     methods: {
       // 头像上传
@@ -814,6 +836,7 @@
           itemPraise: _this.school.eighthOne,
           itemWhole: `教室光线${_this.school.eighthTwo}，通气${_this.school.eighthThree}`
         });
+        console.log(school);
         params.append("campusEnvironment", JSON.stringify(school));
         // 伙食情况
         let food = [];

@@ -19,6 +19,8 @@ const http = {
   // 校查查
   getSchoolList: url + "school/getSchoolList.do?",// 获取学校列表
   addSchool: url + "school/addSchool.do?",// 添加学校
+  deleteSchool: url + "school/deleteSchool.do?",// 删除学校
+  getSchoolById: url + "school/getSchoolById.do?",// 获取学校信息
   oneFileUpload : url + "fileUpload/oneFileUpload.do?",// 单文件上传
   moreFileUpload: url + "fileUpload/moreFileUpload.do?",// 多文件上传
   /*
