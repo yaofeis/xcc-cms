@@ -893,7 +893,7 @@
           imageUrl: _this.food.img
         });// 伙食
         _image.push({
-          imageType: 5,
+          imageType: 6,
           imageUrl: _this.dialogForm.facilitiesImg
         });// 校园设施
         _image.push({
