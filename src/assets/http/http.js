@@ -52,6 +52,7 @@ const http = {
   modifyQuestion: url + "question/modifyQuestion.do?",// 修改问题
   getAnswerList: url + "answer/getAnswerList.do?",// 获取问题的回答列表
   deleteAnswer: url + "answer/deleteAnswer.do?",// 删除答案
+  modifyAnswer: url + "answer/modifyAnswer.do?",// 修改答案
 };
 
 export default http;

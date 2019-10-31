@@ -13,11 +13,11 @@
     <el-table :data="list" border style="width: 99%" :height="tableHeight" :fit="true">
       <el-table-column type="index" width="50"></el-table-column>
       <el-table-column prop="questionTitle" label="标题" width="150"></el-table-column>
-      <el-table-column prop="questionDescrib" label="描述"></el-table-column>
+      <el-table-column prop="describe" label="描述"></el-table-column>
       <el-table-column prop="address" label="发布人" width="100"></el-table-column>
-      <el-table-column prop="address" label="发布时间" width="100"></el-table-column>
+      <el-table-column prop="createdDate" label="发布时间" width="100"></el-table-column>
       <el-table-column prop="address" label="回答数" width="100"></el-table-column>
-      <el-table-column prop="address" label="浏览数" width="100"></el-table-column>
+      <el-table-column prop="visitCount" label="浏览数" width="100"></el-table-column>
       <el-table-column label="操作" width="170">
         <template slot-scope="scope">
           <el-button size="mini" type="text" @click="edit(scope.row)">编辑</el-button>
@@ -41,7 +41,7 @@
           <el-input v-model="editForm.title" auto-complete="off" size="small" style="width: 200px"></el-input>
         </el-form-item>
         <el-form-item label="描述:">
-          <el-input type="textarea" v-model="editForm.desc" size="small" style="width: 200px;height: 200px"></el-input>
+          <el-input type="textarea" v-model="editForm.desc" size="small" :autosize="{ minRows: 4, maxRows: 6}" style="width: 200px;"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -59,6 +59,7 @@
         <el-table-column prop="countPraise" label="点赞数" width="80"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
+            <el-button size="mini" type="text" @click="editComment(scope.row)">编辑</el-button>
             <el-button size="mini" type="text" @click="_deleteComment(scope.row)">删除</el-button>
           </template>
         </el-table-column>
@@ -70,6 +71,22 @@
         layout="total, prev, pager, next"
         :total="commentTotal">
       </el-pagination>
+    </el-dialog>
+
+    <!--修改评论模态框-->
+    <el-dialog title="评论列表" :visible.sync="editCommentDialog" width="400px">
+      <el-form :model="editCommentForm" label-width="80px">
+        <el-form-item label="点赞量:">
+          <el-input v-model="editCommentForm.praise" auto-complete="off" size="small" style="width: 200px"></el-input>
+        </el-form-item>
+        <el-form-item label="答案:">
+          <el-input type="textarea" v-model="editCommentForm.answer" size="small" :autosize="{ minRows: 4, maxRows: 6}" style="width: 200px;"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="editCommentDialog = false" size="small">取 消</el-button>
+        <el-button type="primary" @click="saveComment" size="small">确 定</el-button>
+      </div>
     </el-dialog>
   </div>
 </template>
@@ -105,6 +122,13 @@
         commentParams: {
           questionId: "",
           userId: ""
+        },
+        // 编辑评论模态框相关
+        editCommentDialog: false,
+        editCommentForm: {
+          praise: "",
+          answer: "",
+          id: ""
         }
       }
     },
@@ -119,9 +143,14 @@
         params.append("questionTitle", _this.form.title);
         _this.$axios.post(_this.http.getQuestionList, params).then((res) => {
           if (res.data.code === "0") {
+            res.data.result.map(item=>{
+              item.describe = item.questionDescrib.length > 50 ? item.questionDescrib.substring(0, 50) + '...' : item.questionDescrib;
+            });
             _this.list = res.data.result;
             _this.total = res.data.total;
           } else {
+            _this.list = [];
+            _this.total = 0;
             _this.$message.error(res.data.message);
           }
         });
@@ -238,6 +267,35 @@
         }).catch(() => {
         });
       },
+      // 编辑评论
+      editComment(row){
+        this.editCommentDialog = true;
+        this.editCommentForm.praise = row.countPraise;
+        this.editCommentForm.answer = row.ansContent;
+        this.editCommentForm.id = row.answerId;
+      },
+      // 保存编辑评论
+      saveComment(){
+        let _this = this;
+        let params = new FormData();
+        if (_this.editCommentForm.praise === "") return _this.$message('点赞量不能为空!');
+        if (_this.editCommentForm.answer === "") return _this.$message('答案不能为空!');
+        params.append("answerId", _this.editCommentForm.id);
+        params.append("ansContent", _this.editCommentForm.answer);
+        params.append("countPraise", _this.editCommentForm.praise);
+        _this.$axios.post(_this.http.modifyAnswer, params).then((res) => {
+          if (res.data.code === "0") {
+            _this.$message({
+              message: res.data.message,
+              type: 'success'
+            });
+            _this.editCommentDialog = false;
+            _this.initComment(1);
+          } else {
+            _this.$message.error(res.data.message);
+          }
+        });
+      },
       // 初始化
       init(num) {
         let _this = this;
@@ -248,6 +306,9 @@
           let list = [];
           let total = 0;
           if (res.data.code === "0") {
+            res.data.result.map(item=>{
+              item.describe = item.questionDescrib.length > 50 ? item.questionDescrib.substring(0, 50) + '...' : item.questionDescrib;
+            });
             list = res.data.result;
             total = res.data.total;
           } else {
