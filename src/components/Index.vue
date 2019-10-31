@@ -15,33 +15,21 @@
     <el-container>
       <el-aside width="200px">
         <el-menu default-active="Index" class="el-menu-vertical-demo" router>
-          <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-menu"></i>
-              <span>管理</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index="SchoolList">学校列表</el-menu-item>
-              <el-menu-item index="QuestionList">问题列表</el-menu-item>
-              <el-menu-item index="Banner">轮播图</el-menu-item>
-              <el-menu-item index="Administrator">管理员</el-menu-item>
-              <el-menu-item index="News">新闻列表</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-setting"></i>
-              <span slot="title">系统基本设置</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index="PlatformInformation">平台信息</el-menu-item>
-              <el-menu-item index="PriceStandard">定价标准</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <!--<el-menu-item index="Index">-->
-          <!--<i class="el-icon-setting"></i>-->
-          <!--<span slot="title">导航三</span>-->
-          <!--</el-menu-item>-->
+          <el-menu-item index="Index">
+            <span slot="title">学校列表</span>
+          </el-menu-item>
+          <el-menu-item index="QuestionList">
+            <span slot="title">问题列表</span>
+          </el-menu-item>
+          <el-menu-item index="Banner">
+            <span slot="title">轮播图</span>
+          </el-menu-item>
+          <el-menu-item index="Administrator">
+            <span slot="title">管理员</span>
+          </el-menu-item>
+          <el-menu-item index="News">
+            <span slot="title">新闻列表</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main>
