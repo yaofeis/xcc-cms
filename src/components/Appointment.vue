@@ -12,6 +12,26 @@
         </el-form-item>
       </el-form>
     </div>
+
+    <el-table :data="list" border style="width: 99%" :height="tableHeight">
+      <el-table-column type="index" width="50"></el-table-column>
+      <el-table-column prop="schoolName" label="学校名称" width="150"></el-table-column>
+      <el-table-column prop="address" label="地址" width="180"></el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button size="mini" type="text" @click="edit(scope.row)">编辑</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+
+    <el-pagination
+      @current-change=""
+      :current-page="currentPage"
+      :page-size="pageSize"
+      layout="total, prev, pager, next"
+      :total="total">
+    </el-pagination>
+
   </div>
 </template>
 
@@ -24,7 +44,13 @@
         form: {
           school: ""
         },
-        schoolList: []
+        schoolList: [],
+        // 分页与表格相关
+        list: [],
+        total: 0,
+        currentPage: 1,
+        tableHeight: 200,
+        pageSize: 20
       }
     },
     methods: {
@@ -51,8 +77,14 @@
       search(){
 
       },
+
+      // 编辑
+      edit(){
+
+      }
     },
     created() {
+      this.tableHeight = document.body.clientHeight - 200;
       this.getSchoolList();
     }
   }
