@@ -1,22 +1,6 @@
 const url = "https://www.sqyj.tech/schoolhome-server/";
 
 const http = {
-  getUserList: url + 'user/getUserList.do?',
-  getCouponList: url + 'coupon/getCouponList.do?',
-  addCoupon: url + 'coupon/addCoupon.do?',
-  deleteCoupon: url + 'coupon/deleteCoupon.do?',
-  getDriverList: url + 'driver/getDriverList.do?',
-  driverApplyReview: url + 'driver/driverApplyReview.do?',
-  getOrderList: url + 'order/getOrderList.do?',
-  getOrderById: url + 'order/getOrderById.do?',
-  getWithdrawalList: url + 'withdrawal/getWithdrawalList.do?',
-  reviewWithdrawal: url + 'withdrawal/reviewWithdrawal.do?',
-  getNewsById: url + "news/getNewsById.do?",
-  modifyNewsById: url + "news/modifyNews.do?",
-  deletedNewsById: url + "news/deleteNews.do?",
-  getSettingById: url + "setting/getSettingById.do?",
-  modifySetting : url + "setting/modifySetting.do?",
-  // 校查查
   getSchoolList: url + "school/getSchoolList.do?",// 获取学校列表
   addSchool: url + "school/addSchool.do?",// 添加学校
   deleteSchool: url + "school/deleteSchool.do?",// 删除学校
@@ -53,6 +37,10 @@ const http = {
   getAnswerList: url + "answer/getAnswerList.do?",// 获取问题的回答列表
   deleteAnswer: url + "answer/deleteAnswer.do?",// 删除答案
   modifyAnswer: url + "answer/modifyAnswer.do?",// 修改答案
+  /*
+   * 预约
+   */
+  getSubscribeList: url + "subscribe/getSubscribeList.do",// 获取预约列表
 };
 
 export default http;

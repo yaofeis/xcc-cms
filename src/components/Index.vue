@@ -30,6 +30,9 @@
           <el-menu-item index="News">
             <span slot="title">新闻列表</span>
           </el-menu-item>
+          <el-menu-item index="Appointment">
+            <span slot="title">预约管理</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main>

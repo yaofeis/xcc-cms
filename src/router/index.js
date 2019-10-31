@@ -9,6 +9,7 @@ import Banner from '@/components/Banner'
 import Administrator from '@/components/Administrator'
 import News from '@/components/News'
 import SchoolDetail from '@/components/SchoolDetail'
+import Appointment from '@/components/Appointment'
 
 Vue.use(Router);
 
@@ -51,6 +52,10 @@ const routes = [
         path: '/SchoolDetail',
         name: 'SchoolDetail',
         component: SchoolDetail
+      }, {
+        path: '/Appointment',
+        name: 'Appointment',
+        component: Appointment
       }
     ]
   }
