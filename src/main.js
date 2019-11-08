@@ -32,6 +32,17 @@ router.beforeEach((to, from, next) => {
   }
 });
 
+// 时间过滤
+Vue.filter("date", function (value) {
+  let date = new Date(value);
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  let hours = date.getHours();
+  let minute = date.getMinutes();
+  return `${year}-${month}-${day} ${hours}:${minute}`
+});
+
 // 接口请求拦截添加loading
 let loadingInstance;
 axios.interceptors.request.use(function (config) {

@@ -14,9 +14,13 @@
       <el-table-column type="index" width="50"></el-table-column>
       <el-table-column prop="questionTitle" label="标题" width="150"></el-table-column>
       <el-table-column prop="describe" label="描述"></el-table-column>
-      <el-table-column prop="address" label="发布人" width="100"></el-table-column>
-      <el-table-column prop="createdDate" label="发布时间" width="100"></el-table-column>
-      <el-table-column prop="address" label="回答数" width="100"></el-table-column>
+      <el-table-column prop="userId" label="发布人ID" width="100"></el-table-column>
+      <el-table-column label="发布时间" width="100">
+        <template slot-scope="scope">
+          <span>{{scope.row.createdDate | date}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="countAnswer" label="回答数" width="100"></el-table-column>
       <el-table-column prop="visitCount" label="浏览数" width="100"></el-table-column>
       <el-table-column label="操作" width="170">
         <template slot-scope="scope">
